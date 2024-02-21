@@ -1,0 +1,146 @@
+* Why writting clean react code is important?
+
+->   - When code is messy and disorganized, it can be difficult to understand how different elements come together to
+       form the final project.
+     - This can lead to confusion for both the developer working on the code and for the end users who will interact 
+       with the application.
+     - When the code is clean and well-organized, its easy to see the relationships between different elements,
+       understand how they fit together, and make changes as needed.
+
+
+* How to write clean ReactCode?
+
+->  Ten ways to write clean React code : 
+    1. Use meaningful component names
+    2. Breakdown components
+    3. Use Destructuring
+    4. Keep components small
+    5. Use proptypes
+    6. Use functional components
+    7. Avoid using inline styles
+    8. Use arrow functions
+    9. Use stateless components
+    10. Use the spread operator.
+
+1. Use meaningful component names : 
+    - Give component names that reflect their functionality.
+    - Meaningful names make it easier to understand what a component does and what are its purposes in the application.
+    - If a component is named according to its purpose, it will be easier to maintain, refactor, or modify in the future.
+    - It helps multiple developers to work together and collaborate more effectively.
+
+    Example:
+     
+     * The below code is example for bad practice :
+
+     const calculates=(r)=>{
+            return 3.1415 * r * r;
+     }
+     const r=2;
+     const a= calculates(r);
+     console.log(`The area of a circle with radius ${r} is ${a}`);
+
+     * The below code is example for best practice : 
+
+     const calculateAreaOfCircle=(radius)=>{
+        const PI=3.145;
+        return PI * radius * radius;
+     }
+
+     const circleRadius = 2;
+     const circleArea = calculateAreaOfCircle(circleRadius);
+     console.log(`The Area of a circle with radius ${circleRadius} is ${circleArea});
+
+
+2. Breakdown components : 
+
+    - Breakind down complex components into smaller will make it easier to understand and maintain the code.
+    - Smaller components are easier to reuse across the application, easier to fix bugs and also to add new features.
+    - It can help to improve the performance of the application.
+
+    Example : 
+     
+     * The below code is example for bad practice :
+
+      const UserProfile = (props) =>{
+        return (
+            <div className="userProfile">
+              <div className="userInfo">
+                 <h2>{props.username}<h2>
+                 <p>{props.bio}</p>
+              </div>
+              <img src={props.avatar} alt={props.username}/>
+            </div>
+        );
+      };
+
+      * The below code is example for good practice :
+
+      const UserInfo = (props) =>{
+        return(
+            <div className="userInfo">
+               <h2>{props.username}<h2>
+                 <p>{props.bio}</p>
+            </div>
+        );
+      };
+
+      const UserAvatar=(props)=>{
+        return(
+            <div className="userAvatar">
+              <img src={props.avatar} alt={props.username}/>
+            </div>
+        );
+      };
+
+      const UserProfile=(props)=>{
+        return(
+            <div className="user-profile">
+             <UserInfo {...props}/>
+             <UserAvatar {...props}/>
+            </div>
+        );
+      };
+
+
+3. Use Destructuring : 
+
+   - Destructuring props and state makes code more concise and readable.
+   - Instead of writting props.title we can write "const {title} = props.
+   - It allows you to extract values from objects or arrays in a more concise and readable way.
+   - It also reduces the line of code.
+
+   Example : 
+
+   const person = {
+    firstName = "Sneha",
+    lastName = "Mullur",
+    age = 29,
+    city = "Bangalore"
+   };
+
+   * The below code is example for bad practice :
+
+   const firstName = person.firstName;
+   const lastName = person.lastName;
+   const age = person.age;
+   const city = person.city;
+
+   * The below code is example for good practice :
+
+   const{firstName, lastName, age, city} = person;
+
+
+
+4. Keep components small : 
+
+
+
+
+
+
+
+  
+     
+    
+
+       
