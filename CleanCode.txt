@@ -132,7 +132,8 @@
 
 
 4. Keep components small : 
-
+  
+  -this is small change
 
 
 
