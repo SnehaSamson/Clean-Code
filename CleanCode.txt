@@ -133,7 +133,58 @@
 
 4. Keep components small : 
   
-  -this is small change
+  - Smaller components are easier to maintain and reuse across the application and also easier to fix the bugs.
+  - It also helps in improving the performance of the application.
+  - It also makes it easier to collaborate with other developers by reducing the complexity of individual components.
+
+  Example : 
+
+  * The below code is example for bad practice :
+
+  const MyComponent = ({title, description, onClick}) =>
+  {
+    return(
+      <div>
+        <h1>{title}</h1>
+        <p>{description}</p>
+        <button onClick={onClick}>Click me </button>
+      </div>
+    );
+  }
+
+  * The below code is example for good practice :
+
+  const Title = ({title}) =>{
+    return (
+      <h1>{title}</h1> 
+    );
+  }
+
+  const Description = ({description}) =>{
+    return(
+      <p>{description}</p>
+    );
+  }
+
+  const Button =({onClick, label}) = >{
+    return (
+      <button onClick={onClick}>{label}</button>
+    );
+  }
+
+  const MyComponent =({title, description,onClick,buttonLabel}) =>{
+    return(
+      <div>
+      <Title title={title} />
+      <Description description={description} />
+      <Button onClick
+      </div>
+    )
+  }
+
+
+
+  
 
 
 
