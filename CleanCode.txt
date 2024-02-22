@@ -177,10 +177,111 @@
       <div>
       <Title title={title} />
       <Description description={description} />
-      <Button onClick
+      <Button onClick={onClick} label={buttonLabel}/>
       </div>
-    )
+    );
   }
+
+
+  5. Use prop-types : 
+   - When prop types is passed to a component helps prevent errors.
+   - Prop types help  to ensure that the correct data types are being passed into your components.
+   - They can help to identify issues with your code by providing helpful error messages when an 
+     incorrect data type is passed to a component.
+   - Using prop types can help to facilitate collaboration between developers by making it clear
+     what data is expected by each component and reducing confusion about how to use the component.
+
+     Example : 
+     
+      import PropTypes from 'prop-types';
+
+      const Post = ({title,body}) => {
+        return(
+          <div className="post">
+           <h2>{title} </h2>
+           <p>{body}</p>
+          </div>
+
+        );
+      };
+
+      Post.propTypes={
+         title : PropTypes.string.isRequired,
+         body : PropTypes.string.isRequired,
+      };
+
+      6. Use functional Components : 
+
+        - Functional components are easier to read and write than class component.
+        - Functionaly components are generally faster and more efficient than class components because they dont 
+          require a constructor or lifecycle methods.
+        - Functional components are typically stateless, meaning they dont maintain their own state.
+
+        Example : 
+
+        const UserProfile = (props) =>{
+          const handleEdit = () =>{
+            // handle edit logic
+          }
+          return(
+            <div className="user-profile">
+               <UserInfo {...props} onEdit={handleEdit} />
+               <UserAvatar {...props} />
+            </div>
+          );
+        };
+
+
+      7. Avoid using inline styles : 
+
+        - Inline styles should be avoided to improve the performance of the application.
+        - By using the css classes it seperates the presentation from the logic and makes it easier to maintain and 
+          update the design.
+        - Separating the styles from the component logic makes it easier to modify the code.
+        - Using external stylesheet or CSS modules makes it even easier to reuse style across multiple components.
+          It will reduce the amount of code duplication.
+        - By having a clear separation between the styles and the component logic, it's easier to debug issues 
+          that arise with either the styles or the component logic.
+
+          Example : 
+
+          * The below code is example for bad practice :
+
+           const Box = (props) =>{
+            const styles = {
+              backgroundColor : props.color,
+              width : props.width,
+              height : props.height,
+              margin : props.margin,
+            };
+            return <div style={styles}>{props.children}</div>
+            }
+
+          * The below code is example for good practice :
+
+          const Box =(props) =>{
+            const classNames=`box box-${props.color}`;
+
+            return(
+              <div className={classNames}>
+              {props.children}
+              </div>
+            );
+          };
+
+      8. Use Arrow function :
+       
+        - Arrow functions make code more concise and easier to read.
+        - They are better way to write functions in javacript, which can lead to more cleaner and readble code.
+        - Arrow functions automatically bind to the parent scope, which can be helpful in cases where you need to
+          access the parent scope's 'this' keyword.
+        - Arrow function can eleminate the bind() method to bind 'this' keyword to a components method.
+
+
+
+
+
+  
 
 
 
