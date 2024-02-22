@@ -277,8 +277,117 @@
           access the parent scope's 'this' keyword.
         - Arrow function can eleminate the bind() method to bind 'this' keyword to a components method.
 
+        Example : 
 
+        * The below code is example for bad practice :
 
+         function handleClick() {
+          // handle click logic
+         }
+
+         const Button = () =>{
+          return(
+            <button onClick = {handleClick} > Click me </button>
+          );
+         };
+
+         * The below code is example for good practice :
+           
+           const Button =() =>{
+            const handleClick() {
+              //handle click logic
+            }
+
+            return (
+              <button onClick={handleClick} > Click Me </div>
+            )
+           }
+
+     
+     9. Use Stateless Components : 
+       
+       - Stateless components are easier to reuse and compose since they only have to render based on the data 
+         passed to them through props.
+       - Stateless components are also generally faster and more efficient than stateful components because they 
+         dont have to manage their own state.
+
+       Example : 
+
+       * The below code is example for bad practice :
+
+         const Counter =() =>{
+          const [count , setCount] = useState(0);
+
+          const handleIncrement = () => {
+            setCount(count + 1);
+          };
+
+          return(
+            <div>
+              <p> Count : {count} </p>
+              <button onClick={handleIncrement} > Increment </button>
+            </div>
+          );
+         };
+
+         * The below code is example for good practice :
+
+           const CountDisplay =({ count }) => {
+            return (
+              <p> Count : {count} </p>
+            );
+           };
+
+           const Counter = () => {
+            const [count , setCount] = useState(0);
+
+            const handleIncrement = () => {
+              setCount(count + 1);
+            };
+
+            return (
+              <div>
+                 <CounterDisplay count={count} />
+                 <button onClick = {handleIncrement} > Increment </button>
+              </div>
+            );
+           };
+
+        
+     10. Use the Spread Operator : 
+        
+        - Using the spread operator will make the code shorter and more concise when working with arrays or objects.
+        - The Spread operator allows you to create new objects or array without modifying the original data.
+        - It allows you to easily copy properties form one object to another, which can be useful while updating 
+          the state of a component.
+
+        Example : 
+         
+         const obj1 = { a: 1, b: 2};
+         const obj2 = { c: 3, d: 4};
+
+        * bad practice 
+
+        const mergedObj1 = Object.assign(obj1, obj2);
+
+        * good practice 
+
+        const mergedObj = { ...obj1, ...obj2};
+
+        //Output : {a:1 , b:2, c:3, d:4}
+
+        const arr1 = [1, 2, 3];
+        const arr2 = [4, 5, 6];
+
+        * bad practice 
+
+        const mergedArr1 = arr1.concat(arr2);
+
+        * good practice 
+
+         const mergedArr2 = [...arr1, ...arr2];
+
+         //Output : [1, 2, 3, 4, 5, 6]
 
 
   
